@@ -1,5 +1,22 @@
 module Enumerable
   # Your code goes here
+
+  def my_select
+    # Array -> Array (uses block)
+    # Returns an array containing
+    # Note: uses yield
+
+    # Save new filtered array in result
+    result = []
+    # Iterate through each array item
+    self.my_each do |item|
+      # Adds current item to result if conditions in block are met
+      result.push(item) if yield(item)
+    end
+    # Return new array with filtered elements
+    return result
+  end
+
 end
 
 # You will first have to define my_each
@@ -9,11 +26,11 @@ end
 class Array
 
   def my_each
-    # nil -> nil
+    # Array -> Array (uses block)
     # applies a yield block on each item in the array
     # Note: uses yield
 
-    # save current array length
+    # Save current array length
     array_length = self.length
     # Counter to iterate through all the array items
     item_counter = 0
